@@ -1,0 +1,39 @@
+<html>
+<title> Output SRX SynFlood Policy Configuration </title>
+<h2> ##SRX config for synflood policy </h2>
+<pre>
+security {
+  screen {
+    ids-options {{zone}}-screen {
+    {% if PingOfDeath == "on" %} 
+         icmp {
+            ping-death;
+         }
+    {% endif %}
+    {% if TearDrop == "on" %} 
+         ip {
+            tear-drop;
+         }
+    {% endif %}
+    tcp {
+       syn-flood {
+          alarm-threshold {{alarm_threshold}} ;
+          attack-threshold {{attack_threshold}} ;
+          source-threshold {{source_threshold}} ;
+          destination-threshold {{destination_threshold}};
+          timeout {{timeout}};
+     }
+    {% if LandAttack == "on" %} 
+         land;
+    {% endif %}
+  }
+  }
+ }
+ zones {
+    security-zone {{zone}} {
+      screen {{zone}}-screen;
+  }
+}
+}
+</pre>
+</html>

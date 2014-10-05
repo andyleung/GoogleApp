@@ -1,0 +1,68 @@
+
+<html>
+   <Title> SRX SYN Flood Policy</Title>
+   <h2> SRX SYN Flood Protection Policy Generator</h2>
+   
+   <form method=post > 
+   <table>
+      <tr>
+         <td> Zone:</td>
+         <td> <input type="text" name="zone" value="{{zone}}" > </td>
+         <td> (name of the protected zone) </td>
+      </tr>
+
+      <tr>
+         <td> TCP SYN flood attack threshold:</td>
+         <td> <input type="text" name="attack_threshold" value="{{attack_threshold}}" > </td>
+         <td> (# of new connection requests per second) </td>
+      </tr>
+
+      <tr>
+         <td> TCP SYN flood alarm threshold:</td>
+         <td> <input type="text" name="alarm_threshold" value="{{alarm_threshold}}" > </td>
+         <td> (# of new connections request to make alarm entry in event log) </td>
+      </tr>
+
+      <tr>    
+	     <td> TCP SYN flood source threshold:</td>
+        <td> <input type="text" name="source_threshold" value="{{source_threshold}}" > </td>
+        <td> (# of new connections per source ip address) </td>
+      </tr>
+      <tr>
+         <td> TCP SYN flood destination threshold:</td>
+         <td> <input type="text" name="destination_threshold" value="{{destination_threshold}}" > </td>
+         <td> (# of new connections per destination ip address) </td>
+      </tr>
+      <tr>
+         <td>  TCP SYN flood timeout:</td>
+         <td> <input type="text" name="timeout" value="{{timeout}}" > </td>
+         <td> (e.g. 20, The length of time in second to hold incomplete connection request)</td>
+      </tr>
+   </table>
+   <br>
+   <br>
+      <label>
+	ICMP Ping of Death:
+      </label>
+	<input type="checkbox" name="PingOfDeath" value="on"> 
+	   <br>
+      <label>
+   IP Tear Drop:
+      </label>
+   <input type="checkbox" name="TearDrop" value="on"> 
+      <br>
+        <label>
+   IP Source Route Option:
+      </label>
+   <input type="checkbox" name="SourceRoute" value="on"> 
+      <br>
+      <label>
+   Land Attack:
+      </label>
+   <input type="checkbox" name="LandAttack" value="on"> 
+      <br>
+   <br>
+	   <input type="submit"> 
+   </form>
+</html>
+
