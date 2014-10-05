@@ -21,21 +21,28 @@ class MainPage(Handler):
         self.render("input_config.html")
 
     def post(self):
-	num_of_policy = self.request.get("num_of_policy")
-	zone_A = self.request.get("zone_A")
-	zone_B = self.request.get("zone_B")
-	Interface_A = self.request.get("Interface_A")
-	Interface_B = self.request.get("Interface_B")
-    	logging = self.request.get("logging")
-    	count = self.request.get("count")
-	params = dict(num_of_policy = num_of_policy,
-			zone_A = zone_A,
-			zone_B = zone_B,
-			Interface_A = Interface_A,
-			Interface_B = Interface_B,
-    			logging = logging,
-    			count = count)
-	if not (num_of_policy and zone_A and zone_B):
+	zone = self.request.get("zone")
+	attack_threshold = self.request.get("attack_threshold")
+	alarm_threshold = self.request.get("alarm_threshold")
+	source_threshold = self.request.get("source_threshold")
+	destination_threshold = self.request.get("destination_threshold")
+	timeout = self.request.get("timeout")
+    	PingOfDeath = self.request.get("PingOfDeath")
+    	TearDrop = self.request.get("TearDrop")
+    	SourceRoute = self.request.get("SourceRoute")
+    	LandAttack = self.request.get("LandAttack")
+	params = dict(zone = zone,
+			attack_threshold = attack_threshold,
+			alarm_threshold = alarm_threshold,
+			source_threshold = source_threshold,
+			destination_threshold = destination_threshold,
+    			timeout = timeout,
+    			PingOfDeath = PingOfDeath,
+    			TearDrop = TearDrop,
+    			SourceRoute = SourceRoute,
+    			LandAttack = LandAttack)
+
+	if not (zone and attack_threshold and timeout):
         	self.render("input_config.html",**params)
 	else:
         	self.render("output_config.html",**params)
